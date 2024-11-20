@@ -8,5 +8,5 @@ class Attendance(models.Model):
     date = models.DateField(auto_now_add=True)
     status = models.CharField(max_length=10, choices=[('present', 'Present'), ('absent', 'Absent')],default="absent")
 
-    def __str__(self):
-        return f"{self.student.full_name} - {self.date}"
+    # def __str__(self):
+    #     return f"{self.student.full_name} - {self.date} - {self.status}"

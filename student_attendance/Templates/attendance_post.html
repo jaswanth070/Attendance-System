@@ -59,7 +59,7 @@
         </form>
     </header>
     <div class="container">
-        <h1>Post Attendance</h1>
+        <h1>Post Attendance - {{today}}</h1>
         <form method="POST" action="post">
             {% csrf_token %}
             <div class="table-container">
@@ -73,17 +73,17 @@
                     </thead>
                     <tbody>
                         {% for student in students %}
-                        <tr>
-                            <td>{{ student.username }}</td>
-                            <td>{{ student.full_name }}</td>
-                            <td>
-                                <input 
-                type="checkbox" 
-                name="attendance_{{ student.id }}" 
-                value="present" 
-                >
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ student.username }}</td>
+                                <td>{{ student.full_name }}</td>
+                                <td>
+                                    <input 
+                                        type="checkbox" 
+                                        name="attendance_{{ student.id }}" 
+                                        value="present" 
+                                        >
+                                </td>
+                            </tr>
                         {% endfor %}
                     </tbody>
                 </table>
