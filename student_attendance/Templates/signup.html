@@ -1,0 +1,63 @@
+{%extends "base.html" %}
+
+{%block page%} Signup {%endblock page%}
+
+{%block style%}
+{% load static %}
+<link rel="stylesheet" href="{% static '/css/login/login.css' %}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+{%endblock style%}
+
+{%block content%}
+<div class="ss-container">
+    <div class="ss">
+
+        <div class="logo">
+            <img src="https://cdn.gitam.edu/images/logo/gitam-new-logo.png">
+        </div>
+        
+        <div class="login-container">
+            <form class="login-form" method="POST" action="/signup/">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" name="full_name" placeholder="Enter Full Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">User ID</label>
+                    <input type="text" id="username" name="username" placeholder="Enter User ID" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Type</label>
+                    <input type="radio" id="student" name="type" value="student" required> 
+                    <span>Studnet</span>
+                    <input type="radio" id="stuff" name="type" value="staff" required>
+                    <span>Staff</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone" name="phone" placeholder="Enter Phone Number" required>
+                </div>
+                
+                <button type="submit" id="signup" class="login-btn">Signup</button>
+                <a href="/login" style="text-decoration: none; color: #00796b;">Already Registered?</a>
+            </form>
+        </div>
+
+
+    </div>
+</div>
+{%endblock content%}
+
+{%block script%}
+
+{%endblock script%}

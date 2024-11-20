@@ -1,0 +1,86 @@
+.ss-container {
+    width: 400px;
+    position: absolute;
+    right: 0;
+    top: 10%;
+    background-color: rgba(255, 255, 255, .9);
+    z-index: 99999999999;
+    padding: 20px;
+    padding-top: 5px;
+    left: 0;
+    margin: auto;
+
+}
+
+.ss {
+    width: 100%;
+    align-self: center;
+    margin: 10px auto 10px;
+    text-align: center;
+    padding: 25px 40px;
+    border: 1px #cecece solid;
+    border-radius: 5px;
+}
+
+.login-container {
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+label {
+    width: 85px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    color: #ccc;
+    padding: 7.5px 0;
+    background-color: #555;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="radio"]{
+    margin-left: 10px;
+    padding: 2px;
+}
+
+
+.login-btn {
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+span{
+    text-align: center;
+    margin-left: 2px;
+    margin-top: 6px;
+}
+
+
+.login-btn:hover {
+    background-color: #005f54;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Attendance</title>
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .btn-submit {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-submit:hover {
+            background-color: #45a049;
+        }
+
+        .table-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    {% if message %}
+    <p style="color: green; text-align: center;">{{ message }}</p>
+    {% endif %}
+    <header
+        style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #f4f4f4;">
+        <h1>Welcome, {{request.session.full_name}}</h1>
+        <form action="/logout/" method="post">
+            {% csrf_token %}
+            <button type="submit"
+                style="padding: 10px 20px; background-color: red; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Logout
+            </button>
+        </form>
+    </header>
+    <div class="container">
+        <h1>Post Attendance</h1>
+        <form method="POST" action="post">
+            {% csrf_token %}
+            <div class="table-container">
+                <table id="studentTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                        <tr>
+                            <td>{{ student.username }}</td>
+                            <td>{{ student.full_name }}</td>
+                            <td>
+                                <input 
+                type="checkbox" 
+                name="attendance_{{ student.id }}" 
+                value="present" 
+                >
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button type="submit" class="btn-submit">Submit Attendance</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#studentTable').DataTable({
+                responsive: true,
+                pageLength: 10,
+                lengthChange: false,
+                ordering: true,
+                searching: false,
+                language: {
+                    emptyTable: "No students available for attendance"
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
